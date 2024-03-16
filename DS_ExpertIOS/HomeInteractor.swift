@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import DsCoreIos
 
 protocol HomeUseCase {
   func getAllGames() -> AnyPublisher<[GameModel], Error>

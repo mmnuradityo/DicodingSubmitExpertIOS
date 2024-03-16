@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import DsCoreIos
 
 struct FavoriteImageView: View {
   var game: GameModel

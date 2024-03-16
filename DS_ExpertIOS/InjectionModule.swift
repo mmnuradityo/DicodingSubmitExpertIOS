@@ -7,6 +7,7 @@
 
 import Foundation
 import Cleanse
+import DsCoreIos
 
 struct NetworkServiceModule: Module {
   static func configure(binder: Cleanse.Binder<Cleanse.Unscoped>) {
@@ -43,8 +44,8 @@ struct GameRepositoryModule: Module {
     binder.include(module: LocalDataBaseModule.self)
     binder.install(dependency: UserEntityComponent.self)
     
-    binder.bind(GameRepositoryProtocol.self)
+    binder.bind(GameRepositoryInstaller.self)
       .sharedInScope()
-      .to(factory: GameRepository.init)
+      .to(factory: GameRepositoryInstaller.init)
   }
 }

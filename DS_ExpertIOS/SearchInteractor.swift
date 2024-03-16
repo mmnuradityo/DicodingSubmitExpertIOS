@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import DsCoreIos
 
 protocol SearchUseCase {
   func searchGames(name: String) -> AnyPublisher<[GameModel], Error>

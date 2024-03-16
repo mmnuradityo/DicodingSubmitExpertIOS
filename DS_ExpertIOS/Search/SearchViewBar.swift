@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import DsCoreIos
 
 public protocol SearchViewBarDelegate: NSObjectProtocol {
   func onShowSearchBar()

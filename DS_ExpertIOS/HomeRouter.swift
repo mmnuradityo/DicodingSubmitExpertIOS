@@ -7,6 +7,7 @@
 
 import UIKit
 import Cleanse
+import DsCoreIos
 
 class HomeRouter {
   

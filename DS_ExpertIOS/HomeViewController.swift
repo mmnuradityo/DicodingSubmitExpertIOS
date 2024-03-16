@@ -5,6 +5,7 @@
 //  Created by Admin on 20/01/24.
 //
 import UIKit
+import DsCoreIos
 
 class HomeViewController: UIViewController {
   private let presenter: HomePresenter
@@ -160,7 +161,7 @@ extension HomeViewController: UITableViewDataSource {
     ) as? HomeGameTableViewCell {
       let game = list[indexPath.row]
       cell.labelName.text = game.title
-      cell.labelReleaseDate.text = getDateString(date: game.releaseDate)
+      cell.labelReleaseDate.text = DateUtils.getDateString(date: game.releaseDate)
       cell.labelRating.text = game.rating.description
       
       cell.ivImage.image = game.image != nil ? UIImage(data: game.image!) : nil

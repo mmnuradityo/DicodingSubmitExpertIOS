@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import DsCoreIos
 
 protocol ProfileUseCase {
   func getUser() -> UserModel

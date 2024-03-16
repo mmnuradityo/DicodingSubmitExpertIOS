@@ -6,15 +6,17 @@
 //
 
 import SwiftUI
+import DsCoreIos
 
 struct FavoriteListView: View {
   @ObservedObject var presenter: FavoritePresenter
   var presentViewController: ((GameModel) -> Void)?
+  var validateError: ((String) -> Void)?
   var isSearchActivated = false
   
   var body: some View {
     VStack(spacing: 0) {
-      let _: Void = self.validateError()
+      let _: Void? = validateError?(presenter.errorMessage)
       
       if presenter.loadingState {
         ProgressView {
@@ -50,14 +52,7 @@ struct FavoriteListView: View {
       }
     }
   }
-  
-  func validateError() {
-    if !presenter.errorMessage.isEmpty {
-      displayToast(
-        presenter.errorMessage, width: UIScreen.main.bounds.size.width - 40
-      )
-    }
-  }
+
   
   mutating func setList(games: [GameModel]) {
     isSearchActivated = true

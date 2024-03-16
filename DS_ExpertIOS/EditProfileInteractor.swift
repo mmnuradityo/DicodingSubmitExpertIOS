@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import DsCoreIos
 
 protocol EditProfileUseCase: ProfileUseCase {
   func updateUser(user: UserModel)

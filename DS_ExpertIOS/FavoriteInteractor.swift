@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import DsCoreIos
 
 protocol FavoriteUseCase {
   func getAllGamesFavorite() -> AnyPublisher<[GameModel], Error>

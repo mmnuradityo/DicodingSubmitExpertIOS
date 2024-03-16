@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import DsCoreIos
 
 class FavoriteViewController: UIHostingController<FavoriteListView> {
   private var searchViewBar: SearchViewBar?
@@ -19,6 +20,7 @@ class FavoriteViewController: UIHostingController<FavoriteListView> {
   override func viewDidLoad() {
     super.viewDidLoad()
     rootView.presentViewController = presentViewController
+    rootView.validateError = validateError
     
     if let searchViewBar = searchViewBar {
       searchViewBar.isFavorite = true
@@ -78,4 +80,11 @@ extension FavoriteViewController: SearchViewBarDelegate {
     }
   }
   
+  func validateError(errorMessage: String) {
+    if !errorMessage.isEmpty {
+      displayToast(
+        errorMessage, width: UIScreen.main.bounds.size.width - 40
+      )
+    }
+  }
 }

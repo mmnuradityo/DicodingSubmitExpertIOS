@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import DsCoreIos
 
 struct FavoriteItemView: View {
   var game: GameModel
@@ -42,7 +43,7 @@ struct FavoriteItemView: View {
             .frame(maxWidth: .infinity, alignment: .topLeading)
             .font(.system(.caption, design: .default))
           
-          Text(getDateString(date: game.releaseDate))
+          Text(DateUtils.getDateString(date: game.releaseDate))
             .fixedSize()
             .frame(maxWidth: .infinity, alignment: .topTrailing)
             .font(.system(.caption, design: .default))
@@ -77,7 +78,7 @@ struct FavoriteItemView_Previews: PreviewProvider {
       id: 0,
       title: "Apaan tuh",
       rating: 0.0,
-      releaseDate: generateDate(dateString: "2024-02-22"),
+      releaseDate: DateUtils.generateDate(dateString: "2024-02-22"),
       posterPath: "https://images.unsplash.com/photo-1608229191360-7064b0afa639?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=100&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTcwODYxNzg4MQ&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=100"
     ))
   }

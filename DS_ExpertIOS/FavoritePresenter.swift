@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import DsCoreIos
 
 class FavoritePresenter: BasePresenter {
   

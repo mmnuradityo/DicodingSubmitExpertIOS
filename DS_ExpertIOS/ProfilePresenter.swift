@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import DsCoreIos
 
 class ProfilePresenter: BasePresenter {
   private let userCae: ProfileUseCase

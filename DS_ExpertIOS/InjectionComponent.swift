@@ -7,6 +7,7 @@
 
 import Foundation
 import Cleanse
+import DsCoreIos
 
 struct UserEntityComponent: Component {
   typealias Root = UserEntity
@@ -21,6 +22,7 @@ struct UserEntityComponent: Component {
 }
 
 struct InjectionComponent: RootComponent {
+  typealias Root = Injection
   
   static func configureRoot(binder bind: Cleanse.ReceiptBinder<Injection>) -> Cleanse.BindingReceipt<Injection> {
     return bind.to(factory: Injection.init)
@@ -29,7 +31,4 @@ struct InjectionComponent: RootComponent {
   static func configure(binder: Cleanse.Binder<Cleanse.Singleton>) {
     binder.include(module: GameRepositoryModule.self)
   }
-  
-  typealias Root = Injection
-  
 }

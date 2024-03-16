@@ -6,6 +6,7 @@
 //
 import UIKit
 import SwiftUI
+import DsCoreIos
 
 struct DetailViewControllerView: UIViewControllerRepresentable {
   let game: GameModel
@@ -65,7 +66,7 @@ class DetailViewController: UIViewController {
     
     presenter.$errorMessage.sink { errorMessage in
       if !errorMessage.isEmpty {
-        displayToast(errorMessage, width: UIScreen.main.bounds.size.width - 40)
+        self.displayToast(errorMessage, width: UIScreen.main.bounds.size.width - 40)
       }
     }.store(in: &presenter.cancellables)
   }
@@ -163,7 +164,7 @@ extension DetailViewController {
   
   private func setDataGame(game: GameModel) {
     componentView.labelTitle.text = game.title
-    componentView.labelReleaseDate.text = "Release Date: \(getDateString(date: game.releaseDate))"
+    componentView.labelReleaseDate.text = "Release Date: \(DateUtils.getDateString(date: game.releaseDate))"
     componentView.labelRating.text = "Rating: \(game.rating.description)"
     componentView.labelGenre.text = "Genre: \(game.genre)"
     componentView.labelReview.text = "Total Review: \(game.reviewsCount.description)"

@@ -7,36 +7,37 @@
 
 import Foundation
 import Cleanse
+import DsCoreIos
 
 class Injection: NSObject {
   
-  let repository: Provider<GameRepositoryProtocol>
+  let repositoryInataller: Provider<GameRepositoryInstaller>
   
-  init(repository: Provider<GameRepositoryProtocol>) {
-    self.repository = repository
+  init(repositoryInataller: Provider<GameRepositoryInstaller>) {
+    self.repositoryInataller = repositoryInataller
   }
 
   func provideHomeUseCase() -> HomeUseCase {
-    return HomeInteractor(repository: repository.get())
+    return HomeInteractor(repository: repositoryInataller.get().repository)
   }
   
   func provideDetailUseCase() -> DetailUseCase {
-    return DetailInteractor(repository: repository.get())
+    return DetailInteractor(repository: repositoryInataller.get().repository)
   }
   
   func provideProfileUseCase() -> ProfileUseCase {
-    return ProfileInteractor(repository: repository.get())
+    return ProfileInteractor(repository: repositoryInataller.get().repository)
   }
   
   func provideEditProfileUseCase() -> EditProfileUseCase {
-    return EdoitProfileInteractor(repository: repository.get())
+    return EdoitProfileInteractor(repository: repositoryInataller.get().repository)
   }
   
   func provideFavoriteUseCase() -> FavoriteUseCase {
-    return FavoriteInteractor(repository: repository.get())
+    return FavoriteInteractor(repository: repositoryInataller.get().repository)
   }
   
   func provideSearchUseCase() -> SearchUseCase {
-    return SearchInteractor(repository: repository.get())
+    return SearchInteractor(repository: repositoryInataller.get().repository)
   }
 }

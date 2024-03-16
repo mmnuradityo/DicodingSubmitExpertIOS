@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import DsCoreIos
 
 class EditProfileViewController: UIViewController {
     private let presenter: EditProfilePresenter
@@ -235,7 +236,7 @@ extension EditProfileViewController {
             ) { _ in
                 if isSuccess {
                     self.dismiss(animated: true) {
-                        displayToast("Profile edited successfully", width: UIScreen.main.bounds.size.width - 40)
+                      self.displayToast("Profile edited successfully", width: UIScreen.main.bounds.size.width - 40)
                     }
                 }
             }
