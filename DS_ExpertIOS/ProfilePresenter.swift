@@ -6,9 +6,11 @@
 //
 
 import Foundation
-import DsCoreIos
+import DSCore
+import DSBase
 
 class ProfilePresenter: BasePresenter {
+  
   private let userCae: ProfileUseCase
   let router = ProfileRouter()
   

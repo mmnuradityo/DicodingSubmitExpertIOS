@@ -7,20 +7,15 @@
 
 import Foundation
 import Combine
-import DsCoreIos
+import DSCore
+import DSBase
 
 protocol HomeUseCase {
   func getAllGames() -> AnyPublisher<[GameModel], Error>
   func startDownloadImage(game: GameModel) -> AnyPublisher<GameModel, Never>
 }
 
-class HomeInteractor: HomeUseCase {
-  
-  private let repository: GameRepositoryProtocol
-  
-  required init(repository: GameRepositoryProtocol) {
-    self.repository = repository
-  }
+class HomeInteractor: BaseInteractor<GameRepositoryProtocol>, HomeUseCase {
   
   func getAllGames() -> AnyPublisher<[GameModel], Error> {
     return repository.getAllGames()

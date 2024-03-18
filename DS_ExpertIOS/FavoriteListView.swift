@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import DsCoreIos
+import DSCore
 
 struct FavoriteListView: View {
   @ObservedObject var presenter: FavoritePresenter
@@ -52,7 +52,6 @@ struct FavoriteListView: View {
       }
     }
   }
-
   
   mutating func setList(games: [GameModel]) {
     isSearchActivated = true

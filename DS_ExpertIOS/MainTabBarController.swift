@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import DsCoreIos
+import DSCore
 
 class MainTabBarController: UITabBarController {
   
@@ -26,17 +26,10 @@ class MainTabBarController: UITabBarController {
   
   private func setupView() {
     let router = MainRouter()
-    var viewControllerList: [UIViewController] = []
-    
-    if let homeViewController = router.makeHomeViewController() {
-      viewControllerList.append(homeViewController)
-    }
-    if let favoriteViewController = router.makeFavoriteViewController() {
-      viewControllerList.append(favoriteViewController)
-    }
-    if let profileViewController = router.makeProfileViewController() {
-      viewControllerList.append(profileViewController)
-    }
-    viewControllers = viewControllerList
+    viewControllers = [
+      router.makeHomeViewController(),
+      router.makeFavoriteViewController(),
+      router.makeProfileViewController()
+    ]
   }
 }

@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import DsCoreIos
+import DSCore
 
 struct FavoriteItemView: View {
   var game: GameModel

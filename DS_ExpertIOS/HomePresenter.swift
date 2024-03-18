@@ -7,20 +7,12 @@
 
 import Foundation
 import Combine
-import DsCoreIos
+import DSCore
+import DSBase
 
-class HomePresenter: BasePresenter {
+class HomePresenter: BaseListPresenter<GameModel, HomeUseCase> {
   
-  private let homeUseCase: HomeUseCase
   let homeRouter = HomeRouter()
-  
-  @Published var games: [GameModel] = []
-  @Published var errorMessage: String = ""
-  @Published var loadingState: Bool = false
-  
-  init(homeUseCase: HomeUseCase) {
-    self.homeUseCase = homeUseCase
-  }
   
   func clearGames() {
     self.games.removeAll()
@@ -30,7 +22,7 @@ class HomePresenter: BasePresenter {
     loadingState = true
     errorMessage = ""
     
-    homeUseCase.getAllGames()
+    useCase.getAllGames()
       .receive(on: RunLoop.main)
       .sink(receiveCompletion: { completion in
         switch completion {
@@ -66,8 +58,7 @@ class HomePresenter: BasePresenter {
   }
   
   func startDownloadImage(game: GameModel, completion: @escaping () -> Void) {
-    homeUseCase.startDownloadImage(game: game)
-      .subscribe(on: DispatchQueue.global(qos: .background))
+    useCase.startDownloadImage(game: game)
       .receive(on: RunLoop.main)
       .sink { _ in
         completion()

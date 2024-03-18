@@ -6,24 +6,18 @@
 //
 
 import UIKit
-import Cleanse
+import DSCore
 
 class ProfileRouter {
   
-  func makeEditProfileViewController() -> UINavigationController? {
-    let component = try? ComponentFactory.of(InjectionComponent.self)
+  func makeEditProfileViewController() -> UINavigationController {
+    let useCase = Injection().provideEditProfileUseCase()
+    let editPresenter = EditProfilePresenter(editUseCase: useCase)
+    let editViewController = EditProfileViewController(presenter: editPresenter)
     
-    if let inject = component?.build(()) {
-      let useCase = inject.provideEditProfileUseCase()
-      let editPresenter = EditProfilePresenter(editUseCase: useCase)
-      let editViewController = EditProfileViewController(presenter: editPresenter)
-      
-      let viewController = UINavigationController(rootViewController: editViewController)
-      viewController.modalPresentationStyle = .fullScreen
-      return viewController
-    }
-    
-    return nil
+    let viewController = UINavigationController(rootViewController: editViewController)
+    viewController.modalPresentationStyle = .fullScreen
+    return viewController
   }
   
 }

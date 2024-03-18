@@ -110,8 +110,7 @@ extension ProfileViewController {
 
 extension ProfileViewController {
   @objc func handleEditProfile(sender: UIBarButtonItem) {
-    if let editProfileViewController = presenter.router.makeEditProfileViewController() {
-      present(editProfileViewController, animated: true)
-    }
+    let editProfileViewController = presenter.router.makeEditProfileViewController()
+    present(editProfileViewController, animated: true)
   }
 }

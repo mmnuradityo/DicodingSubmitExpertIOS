@@ -7,7 +7,8 @@
 
 import Foundation
 import Combine
-import DsCoreIos
+import DSCore
+import DSBase
 
 protocol DetailUseCase {
   func getGamesDetail(id: Int) -> AnyPublisher<GameModel, Error>
@@ -15,13 +16,7 @@ protocol DetailUseCase {
   func startDownloadImage(game: GameModel) -> AnyPublisher<GameModel, Never>
 }
 
-class DetailInteractor: DetailUseCase {
-  
-  private let repository: GameRepositoryProtocol
-  
-  required init(repository: GameRepositoryProtocol) {
-    self.repository = repository
-  }
+class DetailInteractor: BaseInteractor<GameRepositoryProtocol>, DetailUseCase {
   
   func getGamesDetail(id: Int) -> AnyPublisher<GameModel, Error> {
     return repository.getGamesDetail(id: id)

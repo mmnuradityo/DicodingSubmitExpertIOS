@@ -6,20 +6,12 @@
 //
 
 import Foundation
-import DsCoreIos
+import DSCore
+import DSBase
 
-class FavoritePresenter: BasePresenter {
+class FavoritePresenter: BaseListPresenter<GameModel, FavoriteUseCase> {
   
-  private let favoriteUseCase: FavoriteUseCase
   let router = FavoriteRouter()
-  
-  @Published var games: [GameModel] = []
-  @Published var errorMessage: String = ""
-  @Published var loadingState: Bool = false
-  
-  init(favoriteUseCase: FavoriteUseCase) {
-    self.favoriteUseCase = favoriteUseCase
-  }
   
   func clearGamesFavorite() {
     self.games.removeAll()
@@ -29,7 +21,7 @@ class FavoritePresenter: BasePresenter {
     self.loadingState = true
     self.errorMessage = ""
     
-    favoriteUseCase.getAllGamesFavorite()
+    useCase.getAllGamesFavorite()
       .receive(on: RunLoop.main)
       .sink(receiveCompletion: { completion in
         switch completion {

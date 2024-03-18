@@ -7,18 +7,14 @@
 
 import Foundation
 import Combine
-import DsCoreIos
+import DSCore
+import DSBase
 
 protocol FavoriteUseCase {
   func getAllGamesFavorite() -> AnyPublisher<[GameModel], Error>
 }
 
-class FavoriteInteractor: FavoriteUseCase {
-  private let repository: GameRepositoryProtocol
-  
-  init(repository: GameRepositoryProtocol) {
-    self.repository = repository
-  }
+class FavoriteInteractor: BaseInteractor<GameRepositoryProtocol>, FavoriteUseCase {
   
   func getAllGamesFavorite() -> AnyPublisher<[GameModel], Error> {
     return repository.getAllGamesFavorite()

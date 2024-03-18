@@ -1,0 +1,50 @@
+{
+  "pins" : [
+    {
+      "identity" : "alamofire",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Alamofire/Alamofire.git",
+      "state" : {
+        "revision" : "3dc6a42c7727c49bf26508e29b0a0b35f9c7e1ad",
+        "version" : "5.8.1"
+      }
+    },
+    {
+      "identity" : "cleanse",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/square/Cleanse.git",
+      "state" : {
+        "revision" : "c854787f83d99527587b5387f04ccd0030e6133a",
+        "version" : "4.2.6"
+      }
+    },
+    {
+      "identity" : "dscore",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mmnuradityo/DSCore.git",
+      "state" : {
+        "revision" : "c1e7e55cd919504cb3138d13ce15d29e507da1d4",
+        "version" : "1.0.2"
+      }
+    },
+    {
+      "identity" : "realm-core",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/realm/realm-core.git",
+      "state" : {
+        "revision" : "a5e87a39cffdcc591f3203c11cfca68100d0b9a6",
+        "version" : "13.26.0"
+      }
+    },
+    {
+      "identity" : "realm-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/realm/realm-swift",
+      "state" : {
+        "revision" : "e7f82d1721d99c7149a0af3d0424df9070a1a646",
+        "version" : "10.48.1"
+      }
+    }
+  ],
+  "version" : 2
+}

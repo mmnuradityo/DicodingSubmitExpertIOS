@@ -7,20 +7,15 @@
 
 import Foundation
 import Combine
-import DsCoreIos
+import DSCore
+import DSBase
 
 protocol SearchUseCase {
   func searchGames(name: String) -> AnyPublisher<[GameModel], Error>
   func searchFavoriteGames(name: String) -> AnyPublisher<[GameModel], Error>
 }
 
-class SearchInteractor: SearchUseCase {
-  
-  private let repository: GameRepositoryProtocol
-  
-  required init(repository: GameRepositoryProtocol) {
-    self.repository = repository
-  }
+class SearchInteractor: BaseInteractor<GameRepositoryProtocol>, SearchUseCase {
   
   func searchGames(name: String) -> AnyPublisher<[GameModel], Error> {
     return repository.searchGames(name: name)

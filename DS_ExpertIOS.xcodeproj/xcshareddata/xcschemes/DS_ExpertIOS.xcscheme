@@ -20,6 +20,62 @@
                ReferencedContainer = "container:DS_ExpertIOS.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "842D8F802BA485F8001F2CB2"
+               BuildableName = "DS_ExpertIOSTests.xctest"
+               BlueprintName = "DS_ExpertIOSTests"
+               ReferencedContainer = "container:DS_ExpertIOS.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "DSSearchTests"
+               BuildableName = "DSSearchTests"
+               BlueprintName = "DSSearchTests"
+               ReferencedContainer = "container:../Module/DSSearch">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "DSDetailViewTests"
+               BuildableName = "DSDetailViewTests"
+               BlueprintName = "DSDetailViewTests"
+               ReferencedContainer = "container:../Module/DSDetailView">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "DSProfileTests"
+               BuildableName = "DSProfileTests"
+               BlueprintName = "DSProfileTests"
+               ReferencedContainer = "container:../Module/DSProfile">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction

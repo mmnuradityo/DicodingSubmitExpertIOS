@@ -6,8 +6,13 @@ workspace 'DicodingSubmit'
 
 target 'DS_ExpertIOS' do
   # Pods for DS_ExpertIOS
+
+   target 'DS_ExpertIOSTests' do
+      inherit! :search_paths
+      # Pods for product testing, if any
+   end
 end
 
-target 'DsCoreIos' do
-  project '../Module/DsCoreIos/DsCoreIos'
-end
+#target 'DsCoreIos' do
+#  project '../Module/DsCoreIos/DsCoreIos'
+#end

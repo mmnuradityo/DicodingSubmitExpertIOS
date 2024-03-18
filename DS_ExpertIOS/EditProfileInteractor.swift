@@ -6,18 +6,14 @@
 //
 
 import Foundation
-import DsCoreIos
+import DSCore
+import DSBase
 
 protocol EditProfileUseCase: ProfileUseCase {
   func updateUser(user: UserModel)
 }
 
-class EdoitProfileInteractor: EditProfileUseCase {
-  private let repository: GameRepositoryProtocol
-  
-  init(repository: GameRepositoryProtocol) {
-    self.repository = repository
-  }
+class EdoitProfileInteractor: BaseInteractor<GameRepositoryProtocol>, EditProfileUseCase {
   
   func getUser() -> UserModel {
     return repository.getUser()

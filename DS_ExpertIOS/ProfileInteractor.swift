@@ -6,19 +6,14 @@
 //
 
 import Foundation
-import DsCoreIos
+import DSCore
+import DSBase
 
 protocol ProfileUseCase {
   func getUser() -> UserModel
 }
 
-class ProfileInteractor: ProfileUseCase {
-  
-  private let repository: GameRepositoryProtocol
-  
-  required init(repository: GameRepositoryProtocol) {
-    self.repository = repository
-  }
+class ProfileInteractor: BaseInteractor<GameRepositoryProtocol>, ProfileUseCase {
   
   func getUser() -> UserModel {
     return repository.getUser()

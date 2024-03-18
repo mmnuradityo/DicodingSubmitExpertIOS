@@ -5,7 +5,9 @@
 //  Created by Admin on 20/01/24.
 //
 import UIKit
-import DsCoreIos
+import DSCore
+import DSBase
+import DSSearch
 
 class HomeViewController: UIViewController {
   private let presenter: HomePresenter
@@ -107,7 +109,7 @@ extension HomeViewController {
       self.setError(errorMessage: errorMessage)
     }.store(in: &presenter.cancellables)
     
-    searchViewBar.observe { (games, isLoading, errorMessage) in
+    searchViewBar.observeSearch { (games, isLoading, errorMessage) in
       if games != nil {
         self.setList(games: games!)
       } else if errorMessage != nil {
@@ -144,7 +146,9 @@ extension HomeViewController {
   
   private func setError(errorMessage: String) {
     if !errorMessage.isEmpty {
-      displayToast(errorMessage, width: UIScreen.main.bounds.size.width - 40)
+      displayToast(
+        errorMessage, width: UIScreen.main.bounds.size.width - 40
+      )
     }
   }
 }
@@ -185,9 +189,8 @@ extension HomeViewController: UITableViewDataSource {
 
 extension HomeViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    if let detailView = presenter.homeRouter.makeDetailView(game: list[indexPath.row]) {
-      present(detailView, animated: true)
-    }
+    let detailView = presenter.homeRouter.makeDetailView(game: list[indexPath.row])
+    present(detailView, animated: true)
   }
 }
 

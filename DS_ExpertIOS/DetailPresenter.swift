@@ -7,7 +7,8 @@
 
 import Foundation
 import Combine
-import DsCoreIos
+import DSCore
+import DSBase
 
 class DetailPresenter: BasePresenter {
   

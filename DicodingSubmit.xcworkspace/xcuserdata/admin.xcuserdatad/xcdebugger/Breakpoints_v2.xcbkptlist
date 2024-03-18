@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "F51942F3-9BBC-439A-AB9A-F6EC41D079D5"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CB2508EA-37D0-46B9-8826-BFA3EC5DA029"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Module/DsCoreIos/DsCoreIosTests/LocalDataBaseTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "testGetSingle()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "CB2508EA-37D0-46B9-8826-BFA3EC5DA029 - 10e1fb25c2c0678b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;DsCoreIos.GameEntity&gt;) -&gt; () in DsCoreIosTests.LocalDataBaseTests.testGetSingle() throws -&gt; ()"
+                  moduleName = "DsCoreIosTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/project/Ios/dicoding/Submit/DS_ExpertIOS/Module/DsCoreIos/DsCoreIosTests/LocalDataBaseTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "100"
+                  endingLineNumber = "100"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  uuid = "CB2508EA-37D0-46B9-8826-BFA3EC5DA029 - 10e1fb25c2c0678b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;DsCoreIos.GameEntity&gt;) -&gt; () in DsCoreIosTests.LocalDataBaseTests.testGetSingle() throws -&gt; ()"
+                  moduleName = "DsCoreIosTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/project/Ios/dicoding/Submit/DS_ExpertIOS/Module/DsCoreIos/DsCoreIosTests/LocalDataBaseTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "100"
+                  endingLineNumber = "100"
+                  offsetFromSymbolStart = "80">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

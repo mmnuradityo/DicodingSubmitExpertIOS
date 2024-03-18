@@ -6,78 +6,49 @@
 //
 
 import UIKit
-import Cleanse
+import DSCore
+import DSSearch
+import DSProfile
 
-class MainRouter {
+public class MainRouter {
   
-  func makeSearchViewBar() -> SearchViewBar? {
-    let component = try? ComponentFactory.of(InjectionComponent.self)
-    
-    if let inject = component?.build(()) {
-      let serachUseCase = inject.provideSearchUseCase()
-      let searchPresenter = SearchPresenter(searchUseCase: serachUseCase)
-      let searchViewBar = SearchViewBar(presenter: searchPresenter)
-      return searchViewBar
-    }
-    
-    return nil
+  public func makeSearchViewBar() -> SearchViewBar {
+    return SearchViewBarBuilder().create()
   }
   
-  func makeHomeViewController() -> UINavigationController? {
-    let component = try? ComponentFactory.of(InjectionComponent.self)
+  public func makeHomeViewController() -> UINavigationController {
+    let useCase =  Injection().provideHomeUseCase()
+    let presenter = HomePresenter(useCase: useCase)
     
-    if let inject = component?.build(()) {
-      let useCase = inject.provideHomeUseCase()
-      let presenter = HomePresenter(homeUseCase: useCase)
-      
-      if let searchViewBar = makeSearchViewBar() {
-        let mainViewController = HomeViewController(
-          presenter: presenter, searchViewBar: searchViewBar
-        )
-        
-        let navigationMain = UINavigationController(rootViewController: mainViewController)
-        navigationMain.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "play"), tag: 0)
-        return navigationMain
-      }
-    }
+    let searchViewBar = makeSearchViewBar()
+    let mainViewController = HomeViewController(
+      presenter: presenter, searchViewBar: searchViewBar
+    )
     
-    return nil
+    let navigationMain = UINavigationController(rootViewController: mainViewController)
+    navigationMain.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "play"), tag: 0)
+    return navigationMain
   }
   
-  func makeFavoriteViewController() -> UINavigationController? {
-    let component = try? ComponentFactory.of(InjectionComponent.self)
+  public func makeFavoriteViewController() -> UINavigationController {
+    let useCase =  Injection().provideFavoriteUseCase()
+    let favoritePresenter = FavoritePresenter(useCase: useCase)
     
-    if let inject = component?.build(()) {
-      let useCase = inject.provideFavoriteUseCase()
-      let favoritePresenter = FavoritePresenter(favoriteUseCase: useCase)
-      
-      if let searchViewBar = makeSearchViewBar() {
-        let favoriteViewController = FavoriteViewController(
-          presenter: favoritePresenter, searchViewBar: searchViewBar
-        )
-        
-        let navigationFavorite = UINavigationController(rootViewController: favoriteViewController)
-        navigationFavorite.tabBarItem = UITabBarItem(title: "Favorite", image: UIImage(systemName: "heart"), tag: 1)
-        return navigationFavorite
-      }
-    }
+    let searchViewBar = makeSearchViewBar()
+    let favoriteViewController = FavoriteViewController(
+      presenter: favoritePresenter, searchViewBar: searchViewBar
+    )
     
-    return nil
+    let navigationFavorite = UINavigationController(rootViewController: favoriteViewController)
+    navigationFavorite.tabBarItem = UITabBarItem(title: "Favorite", image: UIImage(systemName: "heart"), tag: 1)
+    return navigationFavorite
   }
   
-  func makeProfileViewController() -> UINavigationController? {
-    let component = try? ComponentFactory.of(InjectionComponent.self)
+  public func makeProfileViewController() -> UINavigationController {
+    let profileViewController = ProfileBuilder().create()
     
-    if let inject = component?.build(()) {
-      let useCase = inject.provideProfileUseCase()
-      let profilePresenter = ProfilePresenter(profileUserCae: useCase)
-      let profileViewController = ProfileViewController(presenter: profilePresenter)
-      
-      let navigationProfile = UINavigationController(rootViewController: profileViewController)
-      navigationProfile.tabBarItem = UITabBarItem(title: "About", image: UIImage(systemName: "person"), tag: 1)
-      return navigationProfile
-    }
-    
-    return nil
+    let navigationProfile = UINavigationController(rootViewController: profileViewController)
+    navigationProfile.tabBarItem = UITabBarItem(title: "About", image: UIImage(systemName: "person"), tag: 1)
+    return navigationProfile
   }
 }

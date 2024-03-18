@@ -6,7 +6,8 @@
 //
 
 import UIKit
-import DsCoreIos
+import DSCore
+import DSBase
 
 class EditProfileViewController: UIViewController {
     private let presenter: EditProfilePresenter
@@ -234,11 +235,13 @@ extension EditProfileViewController {
             UIAlertAction(
                 title: isSuccess ? "OK" : "Dismiss", style: isSuccess ? .default : .cancel
             ) { _ in
-                if isSuccess {
-                    self.dismiss(animated: true) {
-                      self.displayToast("Profile edited successfully", width: UIScreen.main.bounds.size.width - 40)
-                    }
+              if isSuccess {
+                self.dismiss(animated: true) {
+                  self.displayToast(
+                    "Profile edited successfully", width: UIScreen.main.bounds.size.width - 40
+                  )
                 }
+              }
             }
         )
         present(allertController, animated: true, completion: nil)

@@ -6,7 +6,9 @@
 //
 
 import SwiftUI
-import DsCoreIos
+import DSCore
+import DSBase
+import DSSearch
 
 class FavoriteViewController: UIHostingController<FavoriteListView> {
   private var searchViewBar: SearchViewBar?
@@ -29,7 +31,7 @@ class FavoriteViewController: UIHostingController<FavoriteListView> {
       searchViewBar.showOrHideSearchBar(isShow: false)
       navigationItem.rightBarButtonItem = searchViewBar.searchButton
       
-      searchViewBar.observe { (games, isLoading, errorMessage) in
+      searchViewBar.observeSearch { (games, isLoading, errorMessage) in
         if games != nil {
           self.rootView.setList(games: games!)
         } else if errorMessage != nil {
@@ -49,9 +51,8 @@ class FavoriteViewController: UIHostingController<FavoriteListView> {
   }
   
   func presentViewController(game: GameModel) {
-    if let detailView = rootView.presenter.router.makeDetailView(game: game) {
-      present(detailView, animated: true)
-    }
+    let detailView = rootView.presenter.router.makeDetailView(game: game)
+    present(detailView, animated: true)
   }
   
   @MainActor required dynamic init?(coder aDecoder: NSCoder) {

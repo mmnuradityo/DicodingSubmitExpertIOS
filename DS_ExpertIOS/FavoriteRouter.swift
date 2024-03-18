@@ -7,24 +7,17 @@
 
 import UIKit
 import Cleanse
-import DsCoreIos
+import DSCore
+import DSDetailView
 
-class FavoriteRouter {
+public class FavoriteRouter {
   
-  func makeDetailView(game: GameModel) -> UIViewController? {
-    let component = try? ComponentFactory.of(InjectionComponent.self)
+  public func makeDetailView(game: GameModel?) -> UIViewController {
+    let detailViewController = DetailViewBuilder().create(game: game)
     
-    if let inject = component?.build(()) {
-      let useCase = inject.provideDetailUseCase()
-      let presenter = DetailPresenter(detailUseCase: useCase, game: game)
-      let detailViewController = DetailViewController(presenter: presenter)
-      
-      let viewController = UINavigationController(rootViewController: detailViewController)
-      viewController.modalPresentationStyle = .fullScreen
-      return viewController
-    }
-    
-    return nil
+    let viewController = UINavigationController(rootViewController: detailViewController)
+    viewController.modalPresentationStyle = .fullScreen
+    return viewController
   }
   
 }

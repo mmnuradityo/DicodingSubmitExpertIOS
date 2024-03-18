@@ -6,13 +6,14 @@
 //
 import UIKit
 import SwiftUI
-import DsCoreIos
+import DSCore
+import DSBase
 
 struct DetailViewControllerView: UIViewControllerRepresentable {
   let game: GameModel
   
   func makeUIViewController(context: Context) -> UIViewController {
-    let detailView = HomeRouter().makeDetailView(game: game)!
+    let detailView = HomeRouter().makeDetailView(game: game)
     return detailView
   }
   
@@ -65,8 +66,12 @@ class DetailViewController: UIViewController {
     }.store(in: &presenter.cancellables)
     
     presenter.$errorMessage.sink { errorMessage in
-      if !errorMessage.isEmpty {
-        self.displayToast(errorMessage, width: UIScreen.main.bounds.size.width - 40)
+      if !errorMessage.isEmpty,
+         let delegate = UIApplication.shared.delegate as? AppDelegate,
+         let window = delegate.window {
+        self.displayToast(
+          errorMessage, width: UIScreen.main.bounds.size.width - 40, window: window
+        )
       }
     }.store(in: &presenter.cancellables)
   }
@@ -193,10 +198,12 @@ extension DetailViewController {
 extension DetailViewController {
   @objc func handleFavorite(sender: UIButton) {
     self.notificationUtils.requestNotif {
-      self.presenter.updateFavorite { game in
-        self.notify(
-          game, message: game.isFavorite ? "Save to favorite" : "Remove from favorite"
-        )
+      DispatchQueue.main.sync {
+        self.presenter.updateFavorite { game in
+          self.notify(
+            game, message: game.isFavorite ? "Save to favorite" : "Remove from favorite"
+          )
+        }
       }
     }
   }

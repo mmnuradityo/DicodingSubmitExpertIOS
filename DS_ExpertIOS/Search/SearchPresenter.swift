@@ -6,19 +6,10 @@
 //
 
 import Foundation
-import DsCoreIos
+import DSCore
+import DSBase
 
-class SearchPresenter: BasePresenter {
-  
-  private let searchUseCase: SearchUseCase
-  
-  @Published var games: [GameModel] = []
-  @Published var errorMessage: String = ""
-  @Published var loadingState: Bool = false
-  
-  init(searchUseCase: SearchUseCase) {
-    self.searchUseCase = searchUseCase
-  }
+class SearchPresenter: BaseListPresenter<GameModel, SearchUseCase> {
   
   func prepareForSearch() {
     loadingState = true
@@ -26,7 +17,7 @@ class SearchPresenter: BasePresenter {
   }
   
   func searchGames(name: String) {
-    searchUseCase.searchGames(name: name)
+    useCase.searchGames(name: name)
       .receive(on: RunLoop.main)
       .sink(receiveCompletion: { completion in
         switch completion {
@@ -42,7 +33,7 @@ class SearchPresenter: BasePresenter {
   }
   
   func searchFavoriteGames(name: String) {
-    searchUseCase.searchFavoriteGames(name: name)
+    useCase.searchFavoriteGames(name: name)
       .receive(on: RunLoop.main)
       .sink(receiveCompletion: { completion in
         switch completion {

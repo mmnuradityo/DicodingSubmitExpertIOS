@@ -6,7 +6,8 @@
 //
 
 import Foundation
-import DsCoreIos
+import DSCore
+import DSBase
 
 class EditProfilePresenter: BasePresenter {
   
